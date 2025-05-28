@@ -53,6 +53,8 @@ These are the steps involved in the  process of setting up the MERN stack on an 
    - Choose an instance type, like `t3.micro`, which is free tier eligible.
    - Configure instance details, add storage (10 GB), and configure a security group(Launch-wizard -1) to allow traffic on ports 80 (HTTP), 443 (HTTPS), and 3000 (React) and 5000.
    - Launch the instance
+   
+![aws instance](https://github.com/user-attachments/assets/50feea96-d90c-4f9b-94a6-70cbcdefc307)
 
    ## Step 2: Connect to Your Instance
 
@@ -61,21 +63,30 @@ Connect to your EC2 instance using SSH (used gitbash on my terminal)
          cd "/c/Users/H.P I5 8TH GEN/Downloads"
          chmod 400 class2-publickey.pem
          ssh -i class2-publickey.pem ubuntu@13.49.57.31
+         
+   ![SSH'd into my instance](https://github.com/user-attachments/assets/f945a7d0-836b-4f7a-8158-50b701bed474)
+
 
  Update your Ubuntu Ec2 Instance
 
           sudo apt update && sudo apt upgrade
+          
+![sudo update and upgrade 2](https://github.com/user-attachments/assets/8d46f50a-120f-4728-b3c3-cbb598d86f37)
 
  install git, node js and npm (node package manager) 
 
          sudo apt install -y git curl
          curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
          sudo apt install -y nodejs
+         
+![node js   git installed (1)](https://github.com/user-attachments/assets/ec48f590-aec5-4257-b36f-221f086e0845)
 
 Check the versions installed by running:
 
          node -v
          npm -v
+         
+![node js installed (2)](https://github.com/user-attachments/assets/946c0d8c-8588-410e-9352-3bf75a1ce5d7)
 
 # Creating a Todo application
 ### this application will be able to
@@ -93,10 +104,13 @@ Check the versions installed by running:
          npm init
 Next, tap enter and follow instructions.
 
+![npm init](https://github.com/user-attachments/assets/6635cce2-d82f-468e-96e1-0cc24b6a0c30)
 
 ## step three :  Install Express Js
 
          npm install express
+         
+![npm install 2](https://github.com/user-attachments/assets/aaa1a2b8-eeb4-46c6-be36-5a3aa8ddc4ba)
 
 ## step four : create an index.js file
 
@@ -143,6 +157,7 @@ Make sure you allowed access from all ips to your port 5000 in your SG AWS conso
 
 then visit your ipaddess:5000
 
+![express js output 7](https://github.com/user-attachments/assets/64f4ae75-05e1-4869-a38f-a633bb7fb091)
 
 ## step eight :  For each task, we need to create a routes for the different end points that the todo application will depend on
 
@@ -213,11 +228,15 @@ then visit your ipaddess:5000
                module.exports = Todo;
 
 ## Step ten : Creating Mongodb  
+
    1. in your web browser, visit https://cloud.mongodb.com/
    2. Sign up for an account
    3. After sign up, click on Create Cluster button
    4. Choose AWS cloud and then region closest to you like South Africa
    5. click on create cluster
+
+![mongo DB cloud](https://github.com/user-attachments/assets/2d926d6b-bf71-4e19-992b-656deaf92e84)
+
 
 ### Configure Security Settings
    1.  Create a Database User:
@@ -226,6 +245,8 @@ then visit your ipaddess:5000
    4.  Enter a username and password. Ensure the “Read and Write to any database” option is selected.
    5.  Click "Add User".
    6.  Then go back to cluster page, click in connect, select drivers and choose Mongoose , copy your conection url
+
+![Mongo Database](https://github.com/user-attachments/assets/d2ea4caa-49e2-4a5c-8351-723ada9037f4)
 
 ## step eleven :  Coonecting THe app to Mongo db
 
@@ -243,23 +264,29 @@ then visit your ipaddess:5000
       
       edit and add your own <username: your usernamee, <password: your password > where necessary
 
-    3. Whitelist Your EC2 Public IP Address on MongoDB Atlas
+  3.  Whitelist Your EC2 Public IP Address on MongoDB Atlas
+
 Get your EC2 public IP:
+
              curl ifconfig.me
     
-    Next, On the https://cloud.mongodb.com/ interface,
-    Navigate to:
-    Your Project
-    Network Access (on the left sidebar)
-    Click “+ ADD IP ADDRESS”
-    Paste your EC2 public IP address.
-    Click "Confirm".
+Next, On the https://cloud.mongodb.com/ interface,
+    
+Navigate to:
 
-  3. Navigate to the index.js file which i already set up in todo directory
+* Your Project
+* Network Access (on the left sidebar)
+* Click “+ ADD IP ADDRESS”
+*  Paste your EC2 public IP address
+*  Click "Confirm".
+
+![Mongo Network Access](https://github.com/user-attachments/assets/0ca8df23-900f-4314-8662-2becf31d8ea2)
+
+ 4. Navigate to the index.js file which i already set up in todo directory
 
                sudo nano todo/index.js
 
-   4. Clear out previous code and paste this sample :
+5. Clear out previous code and paste this sample :
 
                const express = require('express');
                const bodyParser = require('body-parser');
@@ -308,22 +335,28 @@ Get your EC2 public IP:
 
        4. Start the server
 
-                 node index.js      
+                 node index.js
+   
+   ![DB successful](https://github.com/user-attachments/assets/2537c447-259e-45d5-a3c8-b203f0d7f646)
 
 
-                 ## PART TWO
+ ## PART TWO
 
- *  connecting the backend code using restful api
+    *connecting the backend code using restful api
 
-    !.   download postman software from   https://www.postman.com/downloads/
+    1.   download postman software from   https://www.postman.com/downloads/
     
     2.   Open Postman and create an api request to <your-server-IP:5000/api/todos>
 
-    3.   Set the HTTP method to POST.
+    3.   Set the HTTP method to POST
+   
     4.   set the header : key=  content-tyep, Value = application/json
   
     5.   Now create a GET request by  Clicking on http, choose GET, add the previous address from the post request
+       
     6.   To create a DELETE request,  click on http, choose DELETE, add the same address as we did in GET and POST request
+
+![postman png](https://github.com/user-attachments/assets/bfadd6bd-0271-45d8-8bd8-fc6ce64630b1)
 
 
 *  Lets create a front end , this is the Client interface that will interact with the api
@@ -381,8 +414,10 @@ Get your EC2 public IP:
     *  Your backend server should load at http://youripaddress:5000
  
     *  P>S ensure to allow port 3000 in aws in bound rules
+    *  
+![react script](https://github.com/user-attachments/assets/ff1f7f83-bfe7-437f-bf2b-1ed37d55a61b)![React png](https://github.com/user-attachments/assets/8cc1357a-78f4-41ce-9163-89178b9ebfa6)
 
-     7. Navigate to src directory and create new directory "components" , tehn create 3 files "Todo.js, Input.js, ListTodo.js"
+  7. Navigate to src directory and create new directory "components" , tehn create 3 files "Todo.js, Input.js, ListTodo.js"
 
                  cd client/src           # Navigate to the React source directory
                  mkdir components        # Create a new folder named 'components'
@@ -397,56 +432,56 @@ Get your EC2 public IP:
         input these codes samples
 
             import React, { Component } from 'react';
-import axios from 'axios';
+            import axios from 'axios';
 
-import Input from './Input';
-import ListTodo from './ListTodo';
+            import Input from './Input';
+            import ListTodo from './ListTodo';
 
-class Todo extends Component {
-  state = {
-    todos: []
-  }
+            class Todo extends Component {
+            state = {
+            todos: []
+            }
 
-  componentDidMount() {
-    this.getTodos();
-  }
+            componentDidMount() {
+            this.getTodos();
+            }
 
-  getTodos = () => {
-    axios.get('/api/todos')
-      .then(res => {
-        if (res.data) {
-          this.setState({
+            getTodos = () => {
+            axios.get('/api/todos')
+            .then(res => {
+            if (res.data) {
+            this.setState({
             todos: res.data
-          });
-        }
-      })
-      .catch(err => console.log(err));
-  }
+            });
+            }
+            })
+            .catch(err => console.log(err));
+            }
 
-  deleteTodo = (id) => {
-    axios.delete(`/api/todos/${id}`)
-      .then(res => {
-        if (res.data) {
-          this.getTodos();
-        }
-      })
-      .catch(err => console.log(err));
-  }
+            deleteTodo = (id) => {
+            axios.delete(`/api/todos/${id}`)
+            .then(res => {
+            if (res.data) {
+            this.getTodos();
+            }
+            })
+            .catch(err => console.log(err));
+            }
 
-  render() {
-    let { todos } = this.state;
+            render() {
+            let { todos } = this.state;
 
-    return (
-      <div>
-        <h1>My Todo(s)</h1>
-        <Input getTodos={this.getTodos} />
-        <ListTodo todos={todos} deleteTodo={this.deleteTodo} />
-      </div>
-    );
-  }
-}
+            return (
+            <div>
+            <h1>My Todo(s)</h1>
+            <Input getTodos={this.getTodos} />
+            <ListTodo todos={todos} deleteTodo={this.deleteTodo} />
+            </div>
+            );
+            }
+            }
 
-export default Todo;
+            export default Todo;
 
 
  * open ListTodo.js
@@ -455,18 +490,18 @@ export default Todo;
 
     paste this sample codes
 
-import React from 'react';
+            import React from 'react';
 
-const ListTodo = ({ todos, deleteTodo }) => {
+            const ListTodo = ({ todos, deleteTodo }) => {
 
-  return (
-    <ul>
-      {
-        todos && todos.length > 0 ?
-        (
-          todos.map(todo => {
             return (
-              <li key={todo._id} onClick={() => deleteTodo(todo._id)}>
+            <ul>
+            {
+            todos && todos.length > 0 ?
+            (
+            todos.map(todo => {
+            return (
+            <li key={todo._id} onClick={() => deleteTodo(todo._id)}>
                 {todo.action}
               </li>
             )
