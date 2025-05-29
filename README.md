@@ -254,7 +254,7 @@ module.exports = Todo;
 
 ![Mongo Database](https://github.com/user-attachments/assets/d2ea4caa-49e2-4a5c-8351-723ada9037f4)
 
-## step eleven :  Coonecting THe app to Mongo db
+## step eleven :  Connecting The App to Mongo db
 
    1. create a .env file in the todo directory and open the file;
 
@@ -354,12 +354,12 @@ app.listen(port, '0.0.0.0', () => {
 
  *connecting the backend code using restful api
 
-     1.   download postman software from   https://www.postman.com/downloads/
-     2.   Open Postman and create an api request to <your-server-IP:5000/api/todos?>
-     3.   Set the HTTP method to POST
-     4.   set the header : key=  content-tyep, Value = application/json
-     5.   Now create a GET request by  Clicking on http, choose GET, add the previous address from the post request
-     6.   To create a DELETE request,  click on http, choose DELETE, add the same address as we did in GET and POST request
+   1.   download postman software from   https://www.postman.com/downloads/
+   2.   Open Postman and create an api request to <your-server-IP:5000/api/todos?>
+   3.   Set the HTTP method to POST
+   4.   set the header : key=  content-tyep, Value = application/json
+   5.   Now create a GET request by  Clicking on http, choose GET, add the previous address from the post request
+   6.   To create a DELETE request,  click on http, choose DELETE, add the same address as we did in GET and POST request
 
 ![postman png](https://github.com/user-attachments/assets/8bce5ef5-19ae-4a81-b5d1-770dcd918c8d)
 
@@ -385,7 +385,7 @@ app.listen(port, '0.0.0.0', () => {
      5.  Set it up by navigating to pacakge.json in the root directory
 
                sudo nano package.json
-       Paste this instead
+ Paste this instead
 
 ```json
 {
