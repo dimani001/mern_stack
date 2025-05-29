@@ -343,7 +343,7 @@ app.listen(port, '0.0.0.0', () => {
 });
 ```
 
-       4. Start the server
+ 4. Start the server
 
                  node index.js
    
@@ -352,21 +352,16 @@ app.listen(port, '0.0.0.0', () => {
 
  ## PART TWO
 
-    *connecting the backend code using restful api
+ *connecting the backend code using restful api
 
-    1.   download postman software from   https://www.postman.com/downloads/
-    
-    2.   Open Postman and create an api request to <your-server-IP:5000/api/todos>
+     1.   download postman software from   https://www.postman.com/downloads/
+     2.   Open Postman and create an api request to <your-server-IP:5000/api/todos?>
+     3.   Set the HTTP method to POST
+     4.   set the header : key=  content-tyep, Value = application/json
+     5.   Now create a GET request by  Clicking on http, choose GET, add the previous address from the post request
+     6.   To create a DELETE request,  click on http, choose DELETE, add the same address as we did in GET and POST request
 
-    3.   Set the HTTP method to POST
-   
-    4.   set the header : key=  content-tyep, Value = application/json
-  
-    5.   Now create a GET request by  Clicking on http, choose GET, add the previous address from the post request
-       
-    6.   To create a DELETE request,  click on http, choose DELETE, add the same address as we did in GET and POST request
-
-![postman png](https://github.com/user-attachments/assets/bfadd6bd-0271-45d8-8bd8-fc6ce64630b1)
+![postman png](https://github.com/user-attachments/assets/8bce5ef5-19ae-4a81-b5d1-770dcd918c8d)
 
 
 *  Lets create a front end , this is the Client interface that will interact with the api
@@ -418,18 +413,18 @@ app.listen(port, '0.0.0.0', () => {
 }
 ```
 
-        6. Navigate back to todo directory and run
+   6. Navigate back to todo directory and run
 
-                  npm run dev
+                   npm run dev
 
-    * the react app should load at http://youripaddress:3000
-    *  Your backend server should load at http://youripaddress:5000
+   * the react app should load at http://youripaddress:3000
+   *  Your backend server should load at http://youripaddress:5000
  
-    *  P>S ensure to allow port 3000 in aws in bound rules
-    *  
+   *  P>S ensure to allow port 3000 in aws in bound rules
+    
 ![react script](https://github.com/user-attachments/assets/ff1f7f83-bfe7-437f-bf2b-1ed37d55a61b)![React png](https://github.com/user-attachments/assets/8cc1357a-78f4-41ce-9163-89178b9ebfa6)
 
-  7. Navigate to src directory and create new directory "components" , tehn create 3 files "Todo.js, Input.js, ListTodo.js"
+  7. Navigate to src directory and create new directory "components" , then create 3 files "Todo.js, Input.js, ListTodo.js"
 
                  cd client/src           # Navigate to the React source directory
                  mkdir components        # Create a new folder named 'components'
