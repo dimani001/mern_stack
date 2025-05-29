@@ -149,7 +149,7 @@ app.get('/', (req, res) => {
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server running on port ${port}`);
 });
-
+```
 
 ## step seven : start server to see if it works
 
@@ -193,7 +193,7 @@ router.delete('/todos/:id', (req, res, next) => {
 });
 
 module.exports = router;
-
+```
 
 
 ## step nine: To be able to use mongodb, we need to install the mongoose package
