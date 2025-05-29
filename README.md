@@ -124,30 +124,32 @@ Next, tap enter and follow instructions.
 
             sudo nano index.js
 
-            const express = require('express');
-            require('dotenv').config();
+```js
+const express = require('express');
+require('dotenv').config();
 
-            const app = express();
+const app = express();
 
-            // Get port from environment or default to 5000
-            const port = process.env.PORT || 5000;
+// Get port from environment or default to 5000
+const port = process.env.PORT || 5000;
 
-            // Middleware to handle CORS
-            app.use((req, res, next) => {
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-            next();
-            });
+// Middleware to handle CORS
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
-            // Default route
-            app.get('/', (req, res) => {
-            res.send('Welcome to Express');
-            });
+// Default route
+app.get('/', (req, res) => {
+  res.send('Welcome to Express');
+});
 
-            // Start server and bind to all interfaces
-            app.listen(port, '0.0.0.0', () => {
-            console.log(`Server running on port ${port}`);
-            });
+// Start server and bind to all interfaces
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server running on port ${port}`);
+});
+
 
 ## step seven : start server to see if it works
 
@@ -174,22 +176,24 @@ then visit your ipaddess:5000
 
 * paste the code below
 
-                  const express = require ('express');
-                  const router = express.Router();
-                  
-                  router.get('/todos', (req, res, next) =&gt; {
-                  
-                  });
-                  
-                  router.post('/todos', (req, res, next) =&gt; {
-                  
-                  });
-                  
-                  router.delete('/todos/:id', (req, res, next) =&gt; {
-                  
-                  })
-                  
-                  module.exports = router;
+```js
+const express = require('express');
+const router = express.Router();
+
+router.get('/todos', (req, res, next) => {
+
+});
+
+router.post('/todos', (req, res, next) => {
+
+});
+
+router.delete('/todos/:id', (req, res, next) => {
+
+});
+
+module.exports = router;
+
 
 
 ## step nine: To be able to use mongodb, we need to install the mongoose package
@@ -211,21 +215,24 @@ then visit your ipaddess:5000
 
 * paste this sample code in it
 
-               const mongoose = require('mongoose');
-               const Schema = mongoose.Schema;
-               
-               //create schema for todo
-               const TodoSchema = new Schema({
-               action: {
-               type: String,
-               required: [true, 'The todo text field is required']
-               }
-               })
-               
-               //create model for todo
-               const Todo = mongoose.model('todo', TodoSchema);
-               
-               module.exports = Todo;
+
+```javascript
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+// Create schema for todo
+const TodoSchema = new Schema({
+  action: {
+    type: String,
+    required: [true, 'The todo text field is required']
+  }
+});
+
+// Create model for todo
+const Todo = mongoose.model('todo', TodoSchema);
+
+module.exports = Todo;
+
 
 ## Step ten : Creating Mongodb  
 
@@ -287,51 +294,55 @@ Navigate to:
                sudo nano todo/index.js
 
 5. Clear out previous code and paste this sample :
+# Backend Server (index.js)
 
-               const express = require('express');
-               const bodyParser = require('body-parser');
-               const mongoose = require('mongoose');
-               const routes = require('./routes/api');
-               const path = require('path');
-               require('dotenv').config();
 
-               const app = express();
-               const port = process.env.PORT || 5000;
+```javascript
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const routes = require('./routes/api');
+const path = require('path');
+require('dotenv').config();
 
-               // Connect to MongoDB
-               mongoose.connect(process.env.DB, {
-               useNewUrlParser: true,
-               useUnifiedTopology: true,
-               })
-               .then(() => console.log('✅ Database connected successfully'))
-               .catch(err => console.error('❌ Error connecting to MongoDB:', err));
+const app = express();
+const port = process.env.PORT || 5000;
 
-               // Use native promises
-               mongoose.Promise = global.Promise;
+// Connect to MongoDB
+mongoose.connect(process.env.DB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('✅ Database connected successfully'))
+.catch(err => console.error('❌ Error connecting to MongoDB:', err));
 
-               // CORS middleware
-               app.use((req, res, next) => {
-               res.header("Access-Control-Allow-Origin", "*"); // removed escape
-               res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With,Content-TypeAccept");
-               next();
-               });
+// Use native promises
+mongoose.Promise = global.Promise;
 
-               // Body parser middleware
-               app.use(bodyParser.json());
+// CORS middleware
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
-               // API routes
-               app.use('/api', routes);
+// Body parser middleware
+app.use(bodyParser.json());
 
-               // Error-handling middleware
-               app.use((err, req, res, next) => {
-               console.error(err.stack);
-               res.status(500).send({ error: err.message });
-               });
+// API routes
+app.use('/api', routes);
 
-               // Start the server
-               app.listen(port, '0.0.0.0', () => {
-               console.log(`🚀 Server running on port ${port}`);
-               });
+// Error-handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send({ error: err.message });
+});
+
+// Start the server
+app.listen(port, '0.0.0.0', () => {
+  console.log(`🚀 Server running on port ${port}`);
+});
+
 
        4. Start the server
 
@@ -382,29 +393,31 @@ Navigate to:
                sudo nano package.json
        Paste this instead
 
-            {
-                 "name": "todo",
-                 "version": "1.0.0",
-                 "main": "index.js",
-                 "scripts": {
-                   "start": "node index.js",
-                   "start-watch": "nodemon index.js",
-                   "dev": "concurrently \"npm run start-watch\" \"cd client && npm start\""
-                 },
-                 "keywords": [],
-                 "author": "",
-                 "license": "ISC",
-                 "description": "",
-                 "dependencies": {
-                  "dotenv": "^16.5.0",
-                  "express": "^5.1.0",
-                  "mongoose": "^8.15.1"
-                 },
-                 "devDependencies": {
-                  "concurrently": "^9.1.2",
-                  "nodemon": "^3.0.2"
-                   }
-                 }
+```json
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start-watch": "nodemon index.js",
+    "dev": "concurrently \"npm run start-watch\" \"cd client && npm start\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.0.2"
+  }
+}
+
 
         6. Navigate back to todo directory and run
 
@@ -431,57 +444,59 @@ Navigate to:
 
         input these codes samples
 
-            import React, { Component } from 'react';
-            import axios from 'axios';
+```jsx
+import React, { Component } from 'react';
+import axios from 'axios';
 
-            import Input from './Input';
-            import ListTodo from './ListTodo';
+import Input from './Input';
+import ListTodo from './ListTodo';
 
-            class Todo extends Component {
-            state = {
-            todos: []
-            }
+class Todo extends Component {
+  state = {
+    todos: []
+  }
 
-            componentDidMount() {
-            this.getTodos();
-            }
+  componentDidMount() {
+    this.getTodos();
+  }
 
-            getTodos = () => {
-            axios.get('/api/todos')
-            .then(res => {
-            if (res.data) {
-            this.setState({
+  getTodos = () => {
+    axios.get('/api/todos')
+      .then(res => {
+        if (res.data) {
+          this.setState({
             todos: res.data
-            });
-            }
-            })
-            .catch(err => console.log(err));
-            }
+          });
+        }
+      })
+      .catch(err => console.log(err));
+  }
 
-            deleteTodo = (id) => {
-            axios.delete(`/api/todos/${id}`)
-            .then(res => {
-            if (res.data) {
-            this.getTodos();
-            }
-            })
-            .catch(err => console.log(err));
-            }
+  deleteTodo = (id) => {
+    axios.delete(`/api/todos/${id}`)
+      .then(res => {
+        if (res.data) {
+          this.getTodos();
+        }
+      })
+      .catch(err => console.log(err));
+  }
 
-            render() {
-            let { todos } = this.state;
+  render() {
+    let { todos } = this.state;
 
-            return (
-            <div>
-            <h1>My Todo(s)</h1>
-            <Input getTodos={this.getTodos} />
-            <ListTodo todos={todos} deleteTodo={this.deleteTodo} />
-            </div>
-            );
-            }
-            }
+    return (
+      <div>
+        <h1>My Todo(s)</h1>
+        <Input getTodos={this.getTodos} />
+        <ListTodo todos={todos} deleteTodo={this.deleteTodo} />
+      </div>
+    );
+  }
+}
 
-            export default Todo;
+export default Todo;
+
 
 
  * open ListTodo.js
@@ -490,33 +505,29 @@ Navigate to:
 
     paste this sample codes
 
-            import React from 'react';
+```jsx
+import React from 'react';
 
-            const ListTodo = ({ todos, deleteTodo }) => {
-
-            return (
-            <ul>
-            {
-            todos && todos.length > 0 ?
-            (
-            todos.map(todo => {
-            return (
+const ListTodo = ({ todos, deleteTodo }) => {
+  return (
+    <ul>
+      {
+        todos && todos.length > 0 ? (
+          todos.map(todo => (
             <li key={todo._id} onClick={() => deleteTodo(todo._id)}>
-                {todo.action}
-              </li>
-            )
-          })
-        )
-        :
-        (
+              {todo.action}
+            </li>
+          ))
+        ) : (
           <li>No todo(s) left</li>
         )
       }
     </ul>
-  )
-}
+  );
+};
 
 export default ListTodo;
+
 
 
  *  Open Input.js
@@ -524,7 +535,8 @@ export default ListTodo;
             sudo nano Input.js
     paste this code
 
-    import React, { Component } from 'react';
+```jsx
+import React, { Component } from 'react';
 import axios from 'axios';
 
 class Input extends Component {
@@ -580,8 +592,10 @@ export default Input;
 
        paste this code in it
 
-       import React from 'react';
+```jsx
+import React from 'react';
 import Todo from './components/Todo';
+import './App.css';
 
 function App() {
   return (
@@ -593,6 +607,7 @@ function App() {
 
 export default App;
 
+
  * Open the app.css also and paste this code
 
           cd ~/todo/client/src
@@ -600,6 +615,7 @@ export default App;
 
 *  Remove any existing styles and paste the full CSS you provided:
 
+```css
 .App {
   text-align: center;
   font-size: calc(10px + 2vmin);
@@ -697,12 +713,12 @@ li {
 
 *  Remove any existing content, then paste this CSS code:
 
+```css
 body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
@@ -711,9 +727,9 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
 
 
 10. Navigate back into parent directory and run the build using this command
@@ -722,7 +738,11 @@ code {
 
 React build would compile sucessfully and both backend and front end will run concurrently through the ports we earlier opened
 
-git 
+git
+
+![todo server](https://github.com/user-attachments/assets/836640b2-eb88-4c7d-9897-8afb600abe13)
+![todo output](https://github.com/user-attachments/assets/8f3ab6c2-6b52-4b91-b433-0e0ed009c749)
+
 
 
 
