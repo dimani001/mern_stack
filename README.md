@@ -168,11 +168,11 @@ then visit your ipaddess:5000
 
 * create an api.js file in it
 
-     touch api.js
+           touch api.js
 
 * open the file using
 
-     sudo nano api.js
+           sudo nano api.js
 
 * paste the code below
 
@@ -200,7 +200,6 @@ module.exports = router;
             npm install mongoose
             
 * Create a models directory
-
 
             mkdir models
             cd models
@@ -232,7 +231,7 @@ const TodoSchema = new Schema({
 const Todo = mongoose.model('todo', TodoSchema);
 
 module.exports = Todo;
-
+```
 
 ## Step ten : Creating Mongodb  
 
@@ -342,7 +341,7 @@ app.use((err, req, res, next) => {
 app.listen(port, '0.0.0.0', () => {
   console.log(`🚀 Server running on port ${port}`);
 });
-
+```
 
        4. Start the server
 
@@ -417,7 +416,7 @@ app.listen(port, '0.0.0.0', () => {
     "nodemon": "^3.0.2"
   }
 }
-
+```
 
         6. Navigate back to todo directory and run
 
@@ -496,7 +495,7 @@ class Todo extends Component {
 }
 
 export default Todo;
-
+```
 
 
  * open ListTodo.js
@@ -527,7 +526,7 @@ const ListTodo = ({ todos, deleteTodo }) => {
 };
 
 export default ListTodo;
-
+```
 
 
  *  Open Input.js
@@ -577,7 +576,7 @@ class Input extends Component {
     );
   }
 }
-
+```
 export default Input;
 
  8. Navigate back to clients directory and install axios. Axios is a promised based HTTP library that enables developers make request to thier own server, or third party servers
@@ -604,6 +603,7 @@ function App() {
     </div>
   );
 }
+```
 
 export default App;
 
@@ -703,7 +703,7 @@ li {
     margin-top: 0;
   }
 }
-
+```
 
 
  * Open the index.css file and paste this code in it
@@ -729,7 +729,7 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
-
+```
 
 
 10. Navigate back into parent directory and run the build using this command
